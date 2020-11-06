@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov  5 17:07:02 2020
+
+@author: Para Aeroespacial
+"""
+import scipy.stats
+ 
+print("Qué tabla desea usar: 1) Normal estándar 2) T-Student 3) Chi-cuadrado 4) F Fischer")
+opt = int(input())
+
+#Calcula la posición de Z
+
+if(opt == 1):
+    print('Inserte el valor de la probabilidad')
+    z1 = float(input())
+    zr = scipy.stats.norm.ppf(z1)
+    print('El valor es ', zr)
+    
+#Calcula el valor de T
+if(opt == 2):
+    print('Inserte el valor de la probabilidad')
+    t1 = float(input())
+    print('Inserte el valor de los grados de libertad')
+    t2 = float(input())
+    tr = scipy.stats.t.ppf(1-t1,t2)
+    print(tr)
+    
+#Calcula el valor de Chi cuadrado
+if(opt == 3):
+    print('Inserte el valor de la probabilidad')
+    c1 = float(input())
+    print('Inserte el valor de los grados de libertad')
+    c2 = float(input())
+    cr = scipy.stats.chi2.ppf(1-c1,c2)
+    print('El valor es ', cr)
+    
+#Calcula el valor de la tabla F de Fischer
+if(opt == 4):
+    print("Inserte el primer término")
+    f1 = float(input())
+    print("Inserte el primer grado de libertad")
+    f2 = float(input())
+    print("Inserte el segundo grado de libertad")
+    f3 = float(input())
+    
+    fr = scipy.stats.f.ppf(1-f1,f2,f3)
+    print('El valor de f es', fr)
+    
+elif(opt>4 or opt<1):
+    print('Valor no especificado, intente nuevamente')
+
